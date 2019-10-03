@@ -1,9 +1,17 @@
 pipeline:
-  plan:
+  versions:
     image: b2c2ltd/terragrunt:0.0.8
     commands:
       - terragrunt --version
       - terraform --version
+    when:
+      event: push
+      branch: master
+  help:
+    image: b2c2ltd/terragrunt:0.0.8
+    commands:
+      - terragrunt help
+      - terraform help
     when:
       event: push
       branch: master
