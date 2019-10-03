@@ -11,7 +11,7 @@ pipeline:
     image: b2c2ltd/terragrunt:0.0.8
     commands:
       - terragrunt help
-      - terraform help
+      - terraform help || true
     when:
       event: push
       branch: master
