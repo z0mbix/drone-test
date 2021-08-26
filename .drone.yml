@@ -1,17 +1,18 @@
-pipeline:
-  versions:
-    image: b2c2ltd/terragrunt:0.0.8
+kind: pipeline
+name: terraform
+
+steps:
+- name: version
+  image: b2c2ltd/terragrunt:0.0.8
+  settings:
     commands:
-      - terragrunt --version
-      - terraform --version
-    when:
-      event: push
-      branch: master
-  help:
-    image: b2c2ltd/terragrunt:0.0.8
+    - terragrunt --version
+  when:
+    event: push
+- name: help
+  image: b2c2ltd/terragrunt:0.0.8
+  settings:
     commands:
-      - terragrunt help
-      - terraform help || true
-    when:
-      event: push
-      branch: master
+    - terragrunt --help
+  when:
+    event: push
