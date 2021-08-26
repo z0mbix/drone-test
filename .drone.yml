@@ -1,5 +1,5 @@
 kind: pipeline
-name: terraform
+name: terragrunt
 
 steps:
 - name: version
@@ -14,5 +14,17 @@ steps:
   settings:
     commands:
     - terragrunt --help
+  when:
+    event: push
+---
+kind: pipeline
+name: test
+
+steps:
+- name: version
+  image: b2c2ltd/terragrunt:0.0.8
+  settings:
+    commands:
+    - terragrunt --version
   when:
     event: push
