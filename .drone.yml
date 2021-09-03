@@ -1,24 +1,28 @@
+---
 kind: pipeline
-name: terragrunt
+type: kubernetes
+name: terraforn
 
 steps:
 - name: version
   image: b2c2ltd/terragrunt:0.0.8
   settings:
     commands:
-    - terragrunt --version
+    - terraform version
   when:
     event: push
 - name: help
   image: b2c2ltd/terragrunt:0.0.8
   settings:
     commands:
-    - terragrunt --help
+    - terraform --help
   when:
     event: push
+
 ---
 kind: pipeline
-name: test
+type: kubernetes
+name: terragrunt
 
 steps:
 - name: version
